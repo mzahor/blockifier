@@ -1,0 +1,20 @@
+{
+  "start_hour_utc": 8,
+  "work_hours": 8,
+  "project_id": "<get it from clockify for your project>",
+  "workspace_id": "604085513c29ee3f118ef7d9",
+  "api_key": "<your personal api key>",
+  "mode": "week", // can be "custom"
+  "week": [
+    "Splunk PoC Monday App",
+    "Enable retrieving user data by id",
+    "Use access token in actions",
+    "Monday api methods",
+    "Implement Task Manager"
+  ],
+  "custom": [
+    ["2022-02-14", "Splunk PoC Monday App"],
+    ["2022-02-15", "Enable retrieving user data by id"],
+    ["2022-02-16", "Use access token in actions"]
+  ]
+}
