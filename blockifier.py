@@ -81,8 +81,8 @@ def post(url, body, api_key):
     return r, response_body
 
 
-def main():
-    config = json.load(open('./config.json'))
+def main(config_path):
+    config = json.load(open(config_path))
     rep = None
     if config['mode'] == 'custom':
         rep = [(datetime.date.fromisoformat(date), description)
@@ -108,7 +108,8 @@ def main():
 
 if __name__ == "__main__":
     try:
-        main()
+        main('./config.json')
+        main('./config-nata.json')
     except Exception as e:
         print("Failed:")
         pp(e.args[0])
