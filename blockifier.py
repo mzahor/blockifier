@@ -5,6 +5,7 @@ import datetime
 from datetime import timedelta
 import json
 import pprint
+import random
 printer = pprint.PrettyPrinter(indent=4)
 pp = printer.pprint
 
@@ -81,6 +82,16 @@ def post(url, body, api_key):
     return r, response_body
 
 
+def get_tasks_for_week():
+    tasks_config = json.load(open('./tasks_config.json'))
+    all_tasks = tasks_config['tasks']
+    all_projects = tasks_config['projects']
+    project = random.choice(all_projects)
+    tasks = random.choices(all_tasks, k=5)
+    result = [f"{project}: {task}" for task in tasks]
+    return result
+
+
 def main(config_path):
     config = json.load(open(config_path))
     rep = None
@@ -89,7 +100,8 @@ def main(config_path):
                for date, description in config['custom']]
     elif config['mode'] == 'week':
         week = getWorkWeek()
-        rep = list(zip(week, config['week']))
+        tasks = get_tasks_for_week()
+        rep = list(zip(week, tasks))
     else:
         print(f"Unknown mode: {config.mode}")
         return
